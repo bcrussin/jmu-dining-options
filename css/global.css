@@ -196,15 +196,4 @@ aside {
     main {
         flex-direction: column;
     }
-
-    aside {
-        min-width: 100%;
-        max-height: 20vh;
-        box-sizing: border-box;
-        align-items: center;
-    }
-
-    aside img {
-        max-height: 20vh;
-    }
 }

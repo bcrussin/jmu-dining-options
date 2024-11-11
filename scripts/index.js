@@ -1,3 +1,5 @@
+const SIDEBAR = document.getElementById('sidebar');
+const SIDEBAR_ARROW = document.getElementById('sidebar-arrow');
 const LOCATION_NAME = document.getElementById('location-name');
 const LOCATION_IMAGE = document.getElementById('location-image');
 const CARDS_CONTAINER = document.getElementById('location-content');
@@ -300,6 +302,10 @@ function isOpen(open, close) {
 }
 
 /* MODAL FUNCTIONS */
+
+function toggleSidebar() {
+    SIDEBAR.classList.toggle('expanded');
+}
 
 function openDetails(id) {
     let restaurant = restaurants[id];
