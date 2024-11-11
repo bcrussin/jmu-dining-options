@@ -1,4 +1,5 @@
-const CARDS = document.getElementsByClassName('card');
+const LOCATION_NAME = document.getElementById('location-name');
+const LOCATION_IMAGE = document.getElementById('location-image');
 const CARDS_CONTAINER = document.getElementById('location-content');
 
 const DETAILS_DIALOG = document.getElementById('details-modal');
@@ -9,9 +10,12 @@ const OPEN_FILTER = document.getElementById('open-filter');
 const LOCATION_FILTER = document.getElementById('location-filter');
 
 const IMAGE_FOLDER = 'images/restaurants/';
+const LOCATIONS_FOLDER = 'images/locations/';
 const LOCATION_NAMES = {
+    'all': 'All Locations',
     'd-hall': 'D-Hall',
-    'dukes-dining': 'Dukes Dining'
+    'dukes-dining': 'Dukes Dining',
+    'east-campus': 'East Campus'
 }
 
 let currDay;
@@ -50,6 +54,7 @@ window.onload = () => {
             });
 
             loadRestaurants();
+            resetFilters();
 
             let location = "";
             restaurantsFiltered = restaurants;
@@ -80,7 +85,17 @@ function editRestaurant(newData) {
 }
 
 /* FILTERING FUNCTIONS */
+function updateLocation() {
+    let location = LOCATION_FILTER.value;
+    if (!location || location == '') location = 'all';
+
+    LOCATION_NAME.textContent = LOCATION_NAMES[location];
+    LOCATION_IMAGE.src = LOCATIONS_FOLDER + location + '.jpg';
+}
+
 function filterRestaurants() {
+    updateLocation();
+
     let filtered = Object.keys(restaurants).reduce((accumulator, key) => {
         let curr = restaurants[key];
 
@@ -98,10 +113,37 @@ function filterRestaurants() {
     }, {});
 
     restaurantsFiltered = filtered;
-    generateCards();
+    updateCards();
+}
+
+function resetFilters() {
+
+    FAVORITE_FILTER.checked = false;
+    OPEN_FILTER.checked = false;
+    LOCATION_FILTER.value = "";
+
+    restaurantsFiltered = restaurants;
+    updateCards();
+    updateLocation();
 }
 
 /* DOM MANIPULATION */
+function updateCards() {
+    let allCards = CARDS_CONTAINER.querySelectorAll('.card');
+
+    console.log(restaurantsFiltered)
+    allCards.forEach(card => {
+        let id = card.id.slice(0, -5);
+        console.log(id)
+
+        console.log(restaurantsFiltered[id]);
+        if (!!restaurantsFiltered[id]) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
 
 function generateCards() {
     if (restaurantsFiltered == undefined) return;
@@ -110,7 +152,12 @@ function generateCards() {
 
     CARDS_CONTAINER.innerHTML = "";
 
-    Object.values(restaurantsFiltered).forEach((item, i) => {
+    let restaurantsSorted = [...Object.values(restaurants)]
+    restaurantsSorted = restaurantsSorted.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+    });
+    console.log(restaurantsSorted)
+    restaurantsSorted.forEach((item, i) => {
         generateCard(item);
     });
 }
@@ -119,11 +166,13 @@ function generateCard(data) {
     let oldElem = document.getElementById(`${data.id}-card`);
 
     if (data == undefined) data = restaurants[data.id];
-    console.log(data)
     // let card = document.createElement('div');
     // card.classList.add('card');
     let cardTemplate = document.getElementById('card-template').cloneNode(true);
+
     let card = document.createElement('div');
+    card.classList.add('card');
+    card.tabIndex = 0;
     card.innerHTML = cardTemplate.innerHTML;
     card.id = `${data.id}-card`;
 
@@ -141,9 +190,11 @@ function generateCard(data) {
     let favorite = card.querySelector('.card-options .favorite');
     if (!!data.isFavorited) favorite.classList.add('selected');
     favorite.innerHTML = !!data.isFavorited ? '&heartsuit;' : '&#9825;';
+
     favorite.addEventListener('click', (e) => {
-        e.stopPropagation();
         favoriteRestaurant(data.id);
+        favorite.focus();
+        e.stopPropagation();
     });
 
     /* Footer */
@@ -151,7 +202,7 @@ function generateCard(data) {
 
     let hours = 'All Day';
     let open, close;
-    let status = 'Closed';
+    let status = 'CLOSED';
     let schedule = Object.keys(data.hours);
     for (let group of schedule) {
         let scheduleGroup = group.split(',');
@@ -266,8 +317,7 @@ function favoriteRestaurant(id, isFavorited) {
 
     if (isFavorited == undefined) isFavorited = !card.isFavorited;
     card.isFavorited = isFavorited;
-    console.log("____________")
-    console.log(card)
+
     editRestaurant(card);
     saveRestaurants();
 
@@ -283,18 +333,17 @@ function saveRestaurants() {
     Object.values(restaurants).forEach(restaurant => {
         let newData = existingData[restaurant.id] ?? {};
 
-        if (restaurant.isFavorited) newData.isFavorited = restaurant.isFavorited;
+        if (restaurant.isFavorited || newData.isFavorited)
+            newData.isFavorited = restaurant.isFavorited;
 
         // Save restaurant data only if there is anything to save
         if (Object.keys(newData).length > 0) existingData[restaurant.id] = newData;
     });
 
     localStorage.setItem('restaurants', JSON.stringify(existingData));
-    console.log(localStorage.getItem('restaurants'))
 }
 
 function loadRestaurants() {
-    console.log(localStorage.getItem('restaurants'))
     let existingData = JSON.parse(localStorage.getItem('restaurants')) ?? {};
 
     Object.values(restaurants).forEach(restaurant => {

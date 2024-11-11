@@ -24,38 +24,45 @@
         <div class="location-info">
           <span class="icon-text">
             <img class="icon" src="images/pin.svg" />
-            <h2>D-Hall</h2>
+            <h2 id="location-name">D-Hall</h2>
           </span>
-          <img src="images/d-hall-location.jpeg" />
+          <img id="location-image" src="images/d-hall-location.jpeg" />
         </div>
 
         <form id="filters">
-          <label for="favorite-filter">Favorited:</label>
-          <input
-            type="checkbox"
-            id="favorite-filter"
-            onchange="filterRestaurants()"
-          />
+          <span>Favorited:</span>
+          <label for="favorite-filter" class="toggle">
+            <input
+              type="checkbox"
+              id="favorite-filter"
+              onchange="filterRestaurants()"
+            />
+          </label>
 
-          <label for="open-filter">Currently Open:</label>
-          <input
-            type="checkbox"
-            id="open-filter"
-            onchange="filterRestaurants()"
-          />
+          <span>Currently Open:</span>
+          <label for="open-filter" class="toggle">
+            <input
+              type="checkbox"
+              id="open-filter"
+              onchange="filterRestaurants()"
+            />
+          </label>
 
           <label for="location-filter">Location: </label>
           <select id="location-filter" onchange="filterRestaurants()">
             <option selected value>All Locations</option>
             <option value="d-hall">D-Hall</option>
             <option value="dukes-dining">Dukes Dining</option>
+            <option value="east-campus">East Campus</option>
           </select>
         </form>
+
+        <button id="reset-filters" onclick="resetFilters()">Reset</button>
       </aside>
 
       <!-- Dynamic Content -->
 
-      <div class="container">
+      <div class="container" tabindex="-1">
         <div id="location-content">
           <!-- Dynamically generated cards go here -->
         </div>
@@ -64,21 +71,19 @@
 
     <!-- Card template, populated using JS -->
     <template id="card-template">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-name"></h3>
-        </div>
+      <div class="card-header">
+        <h3 class="card-name"></h3>
+      </div>
 
-        <img class="card-image" />
+      <img class="card-image" />
 
-        <div class="card-options">
-          <div class="favorite"></div>
-        </div>
+      <div class="card-options">
+        <button class="favorite" tabindex="0"></button>
+      </div>
 
-        <div class="card-footer">
-          <div class="status"></div>
-          <div class="hours"></div>
-        </div>
+      <div class="card-footer">
+        <div class="status"></div>
+        <div class="hours"></div>
       </div>
     </template>
 
