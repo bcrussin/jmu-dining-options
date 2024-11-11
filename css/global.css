@@ -15,9 +15,6 @@ header {
     color: white;
     background-color: #450084;
     padding: 8px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 button {
@@ -38,6 +35,22 @@ select {
     border: 1px solid black;
     border-radius: 4px;
     background: white;
+}
+
+a {
+    color: #007AFF;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a,
+nav a:visited {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-title {
@@ -178,271 +191,6 @@ aside {
     transform: translateX(-100%);
 }
 
-main {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    justify-content: stretch;
-}
-
-.container {
-    width: 100%;
-    overflow-y: auto;
-}
-
-#location-content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    padding: 20px;
-}
-
-.card {
-    position: relative;
-    border: 2px solid #450084;
-    outline: 2px solid transparent;
-    box-shadow: 0 0 8px #00000040;
-    border-radius: 8px;
-    margin: 8px;
-    text-align: center;
-    height: fit-content;
-    aspect-ratio: 1;
-    min-width: 240px;
-    max-height: 800px;
-    overflow: hidden;
-    cursor: pointer;
-
-    transition: outline-color 0.2s;
-}
-
-.card:hover {
-    outline-color: #450084;
-}
-
-.card-header {
-    padding: 12px;
-    background-color: #450084;
-    color: white;
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-}
-
-.card-content {
-    position: absolute;
-    max-height: 0;
-    overflow: hidden;
-}
-
-.card-options {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 999;
-    color: white;
-}
-
-.card-options button {
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 4px;
-
-    width: 24px;
-    height: 24px;
-
-    color: white;
-    font-size: large;
-    background: none;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.2s, text-shadow 0.2s, background-color 0.2s;
-}
-
-.card-options button:focus-visible {
-    outline: none;
-    background-color: white;
-}
-
-.card-options .favorite.selected,
-.card-options .favorite:hover,
-.card-options .favorite:focus-visible {
-    color: #ff6767;
-    background-color: white;
-}
-
-.card-options .favorite.selected {
-    background-color: transparent;
-}
-
-.card-options .favorite.selected:hover,
-.card-options .favorite.selected:focus-visible {
-    background-color: white;
-}
-
-.card-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    min-width: 50%;
-    width: fit-content;
-    border-top-right-radius: 8px;
-    background-color: white;
-    padding: 8px 16px;
-    text-align: left;
-    box-shadow: 0 0 8px #000000a0;
-}
-
-.card-footer .status {
-    font-weight: bold;
-}
-
-.status.open {
-    color: green;
-}
-
-.status.closed {
-    color: red;
-}
-
-.card-footer .hours {
-    font-size: small;
-    opacity: 0.6;
-}
-
-.card.expanded {
-
-    overflow: visible;
-}
-
-.card.expanded .card-content {
-    max-height: 100%;
-}
-
-.card:focus-visible {
-    outline: 2px solid #007AFF;
-}
-
-.card h3 {
-    margin: 0;
-    flex: 1;
-}
-
-.card > img {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    z-index: -1;
-}
-
-.card ul {
-    list-style: none;
-    align-self: stretch;
-    padding: 0;
-}
-
-.card li {
-    margin: 8px 0;
-}
-
-#details-modal {
-    display: block;
-
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    box-shadow: 0 0 16px #00000080;
-    border: none;
-    border-radius: 8px;
-    min-width: min(400px, 90vw);
-    width: 50vw;
-    max-width: max(600px, 90vw);
-    box-sizing: border-box;
-    visibility: hidden;
-    z-index: 100;
-
-    transform: scale(0);
-    transition: transform 0.2s, visibility 0.2s;
-}
-
-#details-modal.open {
-    visibility: visible;
-
-    transform: scale(1);
-
-}
-
-#details-modal::backdrop {
-    visibility: hidden;
-}
-
-#details-backdrop {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-
-    background-color: transparent;
-    transition: background-color 0.2s;
-    z-index: 50;
-}
-
-#details-backdrop.open {
-    background-color: #00000080;
-}
-
-#details {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: center;
-}
-
-#details h2 {
-    text-align: center;
-}
-
-#details #details-address {
-    margin: 4px 0;
-    font-size: small;
-    opacity: 0.6;
-}
-
-#details #details-address-icon {
-    font-size: small;
-}
-
-#details #details-content {
-    margin-top: 0.5lh;
-}
-
-#details button {
-    margin-top: 1lh;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-
-    color: white;
-    background-color: #450084;
-}
 
 @media only screen and (max-width: 800px) {
     main {
