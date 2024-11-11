@@ -68,13 +68,10 @@ aside {
 }
 
 #location-content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    padding: 20px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(200px, min(25%, 300px)), 1fr));
+    padding: 8px;
 }
 
 .card {
@@ -87,7 +84,6 @@ aside {
     text-align: center;
     height: fit-content;
     aspect-ratio: 1;
-    min-width: 240px;
     max-height: 800px;
     overflow: hidden;
     cursor: pointer;
@@ -106,6 +102,7 @@ aside {
     display: flex;
     justify-content: stretch;
     align-items: center;
+    text-wrap: nowrap;
 }
 
 .card-content {
@@ -369,7 +366,6 @@ aside {
 
     aside.expanded {
         flex: 1 !important;
-        max-height: fit-content;
     }
 
     aside.expanded #sidebar-arrow {
@@ -397,5 +393,9 @@ aside {
     aside.expanded + .container {
         flex: 0 0 0;
         min-height: 0;
+    }
+
+    #location-content {
+        padding: 8px;
     }
 }
