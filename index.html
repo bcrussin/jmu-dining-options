@@ -33,6 +33,11 @@
           <img id="location-image" src="images/d-hall-location.jpeg" />
         </div>
 
+        <div id="search-container">
+          <input type="text" id="search-filter" placeholder="Search" onkeyup="filterSearch(this.value)">
+          <button id="search-clear" onclick="clearSearch()">&times;</button>
+        </div>
+
         <form id="filters">
           <span>Favorited:</span>
           <label for="favorite-filter" class="toggle">

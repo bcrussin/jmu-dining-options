@@ -49,6 +49,54 @@ aside {
     justify-self: right;
 }
 
+#search-container {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    width: fit-content;
+    margin: 8px auto;
+    margin-top: 1lh;
+    border: 2px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 260px;
+    background-color: white;
+}
+
+#search-container:has(#search-filter:focus-visible) {
+    border: 2px solid #007AFF;
+    outline: 2px solid white;
+}
+
+#search-filter {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+
+#search-clear {
+    flex: 0 0 auto;
+    visibility: visible;
+    font-size: x-large;
+    cursor: pointer;
+    margin: 2px;
+    padding: 0 4px;
+    border: none;
+    font-family: monospace;
+    color: black;
+    background: none;
+}
+
+#search-clear:disabled {
+    visibility: hidden;
+    padding: 0;
+    max-width: 0;
+}
+
 #reset-filters {
     margin: 8px auto;
     width: fit-content;
@@ -337,7 +385,7 @@ aside {
     aside {
         position: relative;
         flex: 0;
-        min-height: 3lh;
+        flex-basis: fit-content;
         padding: 0;
         min-width: 100%;
         box-sizing: border-box;
@@ -345,7 +393,8 @@ aside {
         align-items: center;
         margin: 0;
         border-radius: 0;
-        overflow: hidden;
+        overflow: visible;
+        border-bottom: 2px solid white;
     }
 
     .location-info {
@@ -355,6 +404,7 @@ aside {
         justify-content: center;
         align-items: center;
         align-self: stretch;
+        cursor: pointer;
     }
 
     .icon-text {
@@ -377,6 +427,7 @@ aside {
 
     aside.expanded {
         flex: 1 !important;
+        min-height: 0;
     }
 
     aside.expanded #sidebar-arrow {
@@ -384,6 +435,9 @@ aside {
     }
 
     aside #location-image {
+        flex: 0 1 auto;
+        width: 95%;
+        min-height: 0;
         max-height: 50vh;
         display: none;
     }
@@ -408,6 +462,15 @@ aside {
     aside.expanded + .container {
         flex: 0 0 0 !important;
         min-height: 0;
+    }
+
+    #search-container {
+        flex: 0 0 auto;
+    }
+
+    aside:not(.expanded) #search-container {
+        margin: 0;
+        margin-bottom: 8px;
     }
 
     #location-content {

@@ -8,6 +8,8 @@ const CARDS_PLACEHOLDER = document.getElementById('cards-placeholder');
 const DETAILS_DIALOG = document.getElementById('details-modal');
 const DETAILS_BACKDROP = document.getElementById('details-backdrop');
 
+const SEARCH_FILTER = document.getElementById('search-filter');
+const SEARCH_CLEAR = document.getElementById('search-clear');
 const FAVORITE_FILTER = document.getElementById('favorite-filter');
 const OPEN_FILTER = document.getElementById('open-filter');
 const LOCATION_FILTER = document.getElementById('location-filter');
@@ -41,9 +43,8 @@ window.addEventListener('click', (e) => {
 
 const currentScript = document.currentScript;
 window.onload = () => {
-    let i = document.createElement('img');
+    SEARCH_FILTER.value = "";
 
-    CARDS_CONTAINER.appendChild(i);
     fetch('storage/restaurants.json')
         .then(response => response.json())
         .then(json => {
@@ -118,37 +119,65 @@ function filterRestaurants() {
     }, {});
 
     restaurantsFiltered = filtered;
-    updateCards();
+    filterSearch();
+}
+
+function filterSearch(query) {
+    query = query ?? SEARCH_FILTER.value;
+
+    let restaurantsSearch;
+    if (!!query) {
+        SEARCH_CLEAR.disabled = false;
+        restaurantsSearch = Object.keys(restaurantsFiltered).reduce((accumulator, key) => {
+            let curr = restaurants[key];
+
+            if (curr.name.toLowerCase().includes(query.toLowerCase()))
+                accumulator[curr.id] = curr;
+
+            return accumulator;
+        }, {});
+    } else {
+        SEARCH_CLEAR.disabled = true;
+    }
+
+    updateCards(restaurantsSearch);
+}
+
+function clearSearch() {
+    SEARCH_FILTER.value = "";
+    filterSearch();
 }
 
 function resetFilters() {
-
+    SEARCH_FILTER.value = "";
     FAVORITE_FILTER.checked = false;
     OPEN_FILTER.checked = false;
     LOCATION_FILTER.value = "";
 
     restaurantsFiltered = restaurants;
-    updateCards();
+    filterSearch();
     updateLocation();
 }
 
 /* DOM MANIPULATION */
-function updateCards() {
+function updateCards(data) {
     let allCards = CARDS_CONTAINER.querySelectorAll('.card');
+
+    data = data ?? restaurantsFiltered;
 
     allCards.forEach(card => {
         let id = card.id.slice(0, -5);
         console.log(id)
 
-        console.log(restaurantsFiltered[id]);
-        if (!!restaurantsFiltered[id]) {
+        console.log(data[id]);
+        if (!!data[id]) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
         }
     });
 
-    if (Object.keys(restaurantsFiltered).length > 0) {
+    if (Object.keys(data).length > 0) {
         CARDS_PLACEHOLDER.style.display = 'none';
         CARDS_CONTAINER.style.display = 'grid';
     } else {
