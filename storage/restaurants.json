@@ -136,6 +136,7 @@
             "name": "Freshens (UREC)",
             "id": "freshens-urec",
             "description": "Freshens Fresh Food Studio® is a healthy, fast casual restaurant offering prepared to order food inspired by fresh ingredients and authentic flavors. Our focus is on customization and speed of service. Our menu includes fresh tossed salads, global rice bowls, fresh blended smoothies, stuffed baguettes, and epic mac and cheese.",
+            "address": "701 Driver Drive Harrisonburg, VA 22807",
             "payment": "['punches', 'deals', 'dining', 'flex', 'card', 'cash']",
             "hours": {
                 "1,2,3,4,5": "11:30-19:30",

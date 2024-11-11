@@ -299,6 +299,7 @@ function openDetails(id) {
 
     document.getElementById('details-name').textContent = restaurant.name;
     document.getElementById('details-address').textContent = restaurant.address;
+    document.getElementById('details-address').href = "https://www.google.com/maps/search/?api=1&query=" + restaurant.address;
     if (!restaurant.address)
         document.getElementById('details-address-icon').style.display = 'none';
     else
