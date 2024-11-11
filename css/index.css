@@ -129,6 +129,10 @@ main {
     color: green;
 }
 
+.status.closing {
+    color: orange;
+}
+
 .status.closed {
     color: red;
 }

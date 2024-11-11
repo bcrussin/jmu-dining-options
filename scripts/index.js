@@ -18,6 +18,8 @@ const LOCATION_NAMES = {
     'east-campus': 'East Campus'
 }
 
+const CLOSING_SOON_THRESHOLD = 30;
+
 let currDay;
 
 let restaurantsFull;
@@ -202,6 +204,7 @@ function generateCard(data) {
 
     let hours = 'All Day';
     let open, close;
+    let statusClass = 'closed';
     let status = 'CLOSED';
     let schedule = Object.keys(data.hours);
     for (let group of schedule) {
@@ -220,7 +223,13 @@ function generateCard(data) {
             }
 
             data.isOpen = isOpen(open, close);
-            status = data.isOpen ? 'OPEN' : 'CLOSED';
+            if (data.isOpen && close - new Date() < Math.floor(CLOSING_SOON_THRESHOLD * 1000 * 60)) {
+                status = 'CLOSING SOON';
+                statusClass = 'closing';
+            } else {
+                status = data.isOpen ? 'OPEN' : 'CLOSED';
+                statusClass = status.toLowerCase();
+            }
         }
     }
 
@@ -232,7 +241,7 @@ function generateCard(data) {
     // statusText.classList.add('status');
     statusText.textContent = status;
     statusText.className = 'status';
-    statusText.classList.add(status.toLowerCase());
+    statusText.classList.add(statusClass);
 
     // footer.appendChild(statusText);
     // footer.appendChild(hoursText);
@@ -265,6 +274,7 @@ function stringToTime(time) {
     let date = new Date();
     date.setHours(hours);
     date.setMinutes(minutes);
+    date.setSeconds(0);
 
     return date;
 }
@@ -283,13 +293,13 @@ function timeToString(date) {
     return hours.toString() + ':' + minutes.toString().padStart(2, '0') + period;
 }
 
-/* MODAL FUNCTIONS */
-
 function isOpen(open, close) {
     let date = new Date();
 
     return open < date && close > date;
 }
+
+/* MODAL FUNCTIONS */
 
 function openDetails(id) {
     let restaurant = restaurants[id];
