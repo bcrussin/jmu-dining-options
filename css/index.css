@@ -5,10 +5,12 @@ main {
     justify-content: stretch;
 }
 
-#sidebar-header {
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
+#sidebar-arrow {
+    display: none;
+}
+
+.location-info {
+    margin-bottom: 0.5lh;
 }
 
 .container {
@@ -307,6 +309,7 @@ main {
     }
 
     #sidebar-arrow {
+        display: block;
         flex: 0 0;
         color: white;
         height: 1lh;
