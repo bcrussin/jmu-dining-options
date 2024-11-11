@@ -4,6 +4,7 @@
             "name": "D-Hall",
             "id": "d-hall",
             "description": "<b>Options:</b> Deli, Hen & Harvest, North (Homestyle), Asian / Fire Wok, True Balance, Southwest, Plant Forward, Pizza, Bakery",
+            "address": "150 Bluestone Drive, 2nd Floor Harrisonburg, VA 22807",
             "hours": {
                 "0,1,2,3,4,5,6": "7:00-20:00"
             }
@@ -11,6 +12,8 @@
         {
             "name": "Market 64",
             "id": "market-64",
+            "description": "<b>Options:</b> arbecue Bowls, Gourmet Sandwiches; Soup; Grab-and-Go; Java City® Coffee and Espresso ",
+            "address": "150 Bluestone Drive, 2nd Floor Harrisonburg, VA 22807",
             "hours": {
                 "0,6": "12:00-20:00",
                 "1,2,3,4": "8:00-20:00",
@@ -21,6 +24,7 @@
             "name": "Freshens (D-Hall)",
             "id": "freshens-d-hall",
             "description": "Freshens Fresh Food Studio is a healthy, fast casual restaurant offering prepared to order food inspired by fresh ingredients and authentic flavors. Our focus is on customization and speed of service. Our menu includes fresh tossed salads, global rice bowls, and fresh blended smoothies.",
+            "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
             "payment": "['punches', 'deals', 'dining', 'flex', 'card', 'cash']",
             "hours": {
                 "1,2,3,4,5": "11:00-21:00",
@@ -31,6 +35,7 @@
             "name": "Steak 'n Shake",
             "id": "steak-n-shake",
             "description": "Steak ‘N Shake® features items such as Steakburgers, chicken fingers, crispy fries, classic and specialty milkshakes, featuring a late-night walk-up window.",
+            "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
             "hours": {
                 "1,2,3,4,5": "19:00-23:00",
                 "0,6": "17:00-24:00"
@@ -39,6 +44,8 @@
         {
             "name": "Chick-fil-A",
             "id": "chick-fil-a",
+            "description": "Fresh hot chicken sandwiches and nuggets, wraps, salads, waffle fries, coleslaw, party platters, beverages, and desserts—even milkshakes and sundaes! Breakfast biscuits and hash browns to start your day.",
+            "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
             "hours": {
                 "1,2,3,4,5,6": "11:00-22:00"
             }

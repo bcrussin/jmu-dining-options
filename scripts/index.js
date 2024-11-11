@@ -298,6 +298,12 @@ function openDetails(id) {
     selectedRestaurant = restaurant;
 
     document.getElementById('details-name').textContent = restaurant.name;
+    document.getElementById('details-address').textContent = restaurant.address;
+    if (!restaurant.address)
+        document.getElementById('details-address-icon').style.display = 'none';
+    else
+        document.getElementById('details-address-icon').style.display = 'block';
+
     document.getElementById('details-content').innerHTML = restaurant.description;
 
     DETAILS_DIALOG.classList.add('open');
