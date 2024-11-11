@@ -3,6 +3,7 @@ const SIDEBAR_ARROW = document.getElementById('sidebar-arrow');
 const LOCATION_NAME = document.getElementById('location-name');
 const LOCATION_IMAGE = document.getElementById('location-image');
 const CARDS_CONTAINER = document.getElementById('location-content');
+const CARDS_PLACEHOLDER = document.getElementById('cards-placeholder');
 
 const DETAILS_DIALOG = document.getElementById('details-modal');
 const DETAILS_BACKDROP = document.getElementById('details-backdrop');
@@ -135,7 +136,6 @@ function resetFilters() {
 function updateCards() {
     let allCards = CARDS_CONTAINER.querySelectorAll('.card');
 
-    console.log(restaurantsFiltered)
     allCards.forEach(card => {
         let id = card.id.slice(0, -5);
         console.log(id)
@@ -147,6 +147,14 @@ function updateCards() {
             card.style.display = 'none';
         }
     });
+
+    if (Object.keys(restaurantsFiltered).length > 0) {
+        CARDS_PLACEHOLDER.style.display = 'none';
+        CARDS_CONTAINER.style.display = 'grid';
+    } else {
+        CARDS_PLACEHOLDER.style.display = 'block';
+        CARDS_CONTAINER.style.display = 'none';
+    }
 }
 
 function generateCards() {
@@ -160,7 +168,7 @@ function generateCards() {
     restaurantsSorted = restaurantsSorted.sort((a, b) => {
         return a.name.localeCompare(b.name);
     });
-    console.log(restaurantsSorted)
+
     restaurantsSorted.forEach((item, i) => {
         generateCard(item);
     });
