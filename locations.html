@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/locations.css" />
+
+    <title>JMU Dining Options</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="locations.html">Locations</a>
+        <span class="nav-title">
+          <img src="images/jmu-logo.png" />
+          <h1>Dining</h1>
+        </span>
+        <a>Payment Options</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Dining Locations</h1>
+
+      <div id="locations-container">
+        <div class="card" onclick="viewLocation('d-hall')">
+          <h2>D-Hall</h2>
+          <img src="images/locations/d-hall.jpg" />
+
+          <div class="card-content">
+            <p>
+              <img src="images/pin.svg" class="icon" /> 150 Bluestone Drive, 2nd
+              Floor, Harrisonburg, VA 22807
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewLocation('dukes-dining')">
+          <h2>Dukes Dining</h2>
+          <img src="images/locations/dukes-dining.jpg" />
+
+          <div class="card-content">
+            <p>
+              <img src="images/pin.svg" class="icon" /> 261 East Grace Street,
+              Harrisonburg, VA 22807
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewLocation('east-campus')">
+          <h2>East Campus</h2>
+          <img src="images/locations/east-campus.jpg" />
+
+          <div class="card-content">
+            <p>
+              <img src="images/pin.svg" class="icon" /> 1301 Carrier Dr,
+              Harrisonburg, VA 22807
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts/locations.js"></script>
+  </body>
+</html>

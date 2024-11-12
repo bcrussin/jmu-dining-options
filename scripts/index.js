@@ -2,6 +2,7 @@ const SIDEBAR = document.getElementById('sidebar');
 const SIDEBAR_ARROW = document.getElementById('sidebar-arrow');
 const LOCATION_NAME = document.getElementById('location-name');
 const LOCATION_IMAGE = document.getElementById('location-image');
+const LOCATION_LINK = document.getElementById('location-link');
 const CARDS_CONTAINER = document.getElementById('location-content');
 const CARDS_PLACEHOLDER = document.getElementById('cards-placeholder');
 
@@ -15,12 +16,20 @@ const OPEN_FILTER = document.getElementById('open-filter');
 const LOCATION_FILTER = document.getElementById('location-filter');
 
 const IMAGE_FOLDER = 'images/restaurants/';
-const LOCATIONS_FOLDER = 'images/locations/';
+const LOCATIONS_FOLDER = 'images/maps/';
 const LOCATION_NAMES = {
     'all': 'All Locations',
     'd-hall': 'D-Hall',
     'dukes-dining': 'Dukes Dining',
     'east-campus': 'East Campus'
+}
+
+const LOCATION_MAP_ROOT = "https://map.jmu.edu/?id=1869#!ct/49647?s/";
+const LOCATION_MAP_PARAMS = {
+    'all': '',
+    'd-hall': 'm/592884?s/',
+    'dukes-dining': 'm/592885?s/',
+    'east-campus': '?m/592957'
 }
 
 const CLOSING_SOON_THRESHOLD = 30;
@@ -33,9 +42,9 @@ let restaurantsFiltered = [];
 
 let selectedRestaurant;
 
-// DETAILS_BACKDROP.addEventListener('click', (e) => {
-//     closeDetails();
-// })
+DETAILS_BACKDROP.addEventListener('pointerup', (e) => {
+    closeDetails();
+})
 
 window.addEventListener('click', (e) => {
     if (!!selectedRestaurant && e.target == document.documentElement) closeDetails();
@@ -60,12 +69,17 @@ window.onload = () => {
             });
 
             loadRestaurants();
-            resetFilters();
-
-            let location = "";
-            restaurantsFiltered = restaurants;
-
             generateCards();
+
+            resetFilters();
+            let params = new URLSearchParams(window.location.search);
+            let location = params.get('location');
+            updateLocation(location);
+            filterRestaurants();
+
+            // restaurantsFiltered = restaurants;
+
+            window.history.pushState({}, "", window.location.pathname);
         });
 }
 
@@ -91,12 +105,17 @@ function editRestaurant(newData) {
 }
 
 /* FILTERING FUNCTIONS */
-function updateLocation() {
-    let location = LOCATION_FILTER.value;
+function updateLocation(location) {
+    if (!!location) LOCATION_FILTER.value = location;
+    location = location ?? LOCATION_FILTER.value;
+
     if (!location || location == '') location = 'all';
 
     LOCATION_NAME.textContent = LOCATION_NAMES[location];
     LOCATION_IMAGE.src = LOCATIONS_FOLDER + location + '.jpg';
+
+    let mapParam = LOCATION_MAP_PARAMS[location] ?? LOCATION_MAP_PARAMS['all'];
+    LOCATION_LINK.href = LOCATION_MAP_ROOT + mapParam;
 }
 
 function filterRestaurants() {
@@ -125,7 +144,7 @@ function filterRestaurants() {
 function filterSearch(query) {
     query = query ?? SEARCH_FILTER.value;
 
-    let restaurantsSearch;
+    let restaurantsSearch = restaurantsFiltered;
     if (!!query) {
         SEARCH_CLEAR.disabled = false;
         restaurantsSearch = Object.keys(restaurantsFiltered).reduce((accumulator, key) => {
@@ -153,10 +172,10 @@ function resetFilters() {
     FAVORITE_FILTER.checked = false;
     OPEN_FILTER.checked = false;
     LOCATION_FILTER.value = "";
+    updateLocation();
 
     restaurantsFiltered = restaurants;
     filterSearch();
-    updateLocation();
 }
 
 /* DOM MANIPULATION */
@@ -167,9 +186,6 @@ function updateCards(data) {
 
     allCards.forEach(card => {
         let id = card.id.slice(0, -5);
-        console.log(id)
-
-        console.log(data[id]);
         if (!!data[id]) {
             card.style.display = 'block';
         } else {
@@ -230,7 +246,9 @@ function generateCard(data) {
 
     let favorite = card.querySelector('.card-options .favorite');
     if (!!data.isFavorited) favorite.classList.add('selected');
-    favorite.innerHTML = !!data.isFavorited ? '&heartsuit;' : '&#9825;';
+
+    let favoriteIcon = card.querySelector('.favorite-icon');
+    favoriteIcon.src = !!data.isFavorited ? 'images/heart-filled.svg' : 'images/heart-outline.svg';
 
     favorite.addEventListener('click', (e) => {
         favoriteRestaurant(data.id);

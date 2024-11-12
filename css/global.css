@@ -93,6 +93,11 @@ h1, h2 {
     margin: 0;
 }
 
+.icon {
+    height: 0.9lh;
+    vertical-align: middle;
+}
+
 
 .toggle input[type=checkbox] {
     opacity: 0;

@@ -5,6 +5,11 @@ main {
     justify-content: stretch;
 }
 
+header {
+    position: sticky;
+    top: 0;
+}
+
 aside {
     min-width: max(200px, 20vw);
     width: 40vw;
@@ -33,6 +38,7 @@ aside {
     max-height: 600px;
     margin-top: 0.5lh;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 #filters {
@@ -171,6 +177,7 @@ aside {
 }
 
 .card-options {
+    opacity: 0;
     position: absolute;
     top: 0;
     right: 0;
@@ -183,6 +190,15 @@ aside {
     color: white;
 }
 
+.card-options:has(.selected) {
+    opacity: 1;
+}
+
+.card:is(:hover, :focus-visible) .card-options,
+.card-options:has(:focus-visible) {
+    opacity: 1;
+}
+
 .card-options button {
     margin: 0;
     padding: 0;
@@ -192,24 +208,30 @@ aside {
     width: 24px;
     height: 24px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     color: white;
+    background-color: #450084;
     font-size: large;
-    background: none;
     cursor: pointer;
     user-select: none;
-    transition: color 0.2s, text-shadow 0.2s, background-color 0.2s;
 }
 
-.card-options button:focus-visible {
+.card-options button .icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(10);
+}
+
+.card-options button:is(:focus-visible, :hover) {
     outline: none;
     background-color: white;
 }
 
-.card-options .favorite.selected,
-.card-options .favorite:hover,
-.card-options .favorite:focus-visible {
-    color: #ff6767;
-    background-color: white;
+.card-options :is(.favorite.selected, .favorite:hover, .favorite:focus-visible) .icon {
+    filter: brightness(1);
 }
 
 .card-options .favorite.selected {

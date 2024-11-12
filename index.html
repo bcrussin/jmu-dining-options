@@ -12,7 +12,7 @@
     <header>
       <nav>
         <a href="index.html">Home</a>
-        <a>Locations</a>
+        <a href="locations.html">Locations</a>
         <span class="nav-title">
           <img src="images/jmu-logo.png" />
           <h1>Dining</h1>
@@ -25,12 +25,12 @@
     <main>
       <aside id="sidebar">
         <div class="location-info" onclick="toggleSidebar()">
-            <span class="icon-text">
-              <img class="icon" src="images/pin.svg" id="location-pin" />
-              <h2 id="location-name">D-Hall</h2>
-              <img id="sidebar-arrow" src="images/expand-arrow.svg"></div>
-            </span>
-          <img id="location-image" src="images/d-hall-location.jpeg" />
+          <span class="icon-text">
+            <img class="icon" src="images/pin.svg" id="location-pin" />
+            <h2 id="location-name">D-Hall</h2>
+            <img id="sidebar-arrow" src="images/expand-arrow.svg"></div>
+          </span>
+          <a id="location-link" target="_blank"><img id="location-image" src="images/d-hall-location.jpeg" /></a>
         </div>
 
         <div id="search-container">
@@ -89,7 +89,7 @@
       <img class="card-image" />
 
       <div class="card-options">
-        <button class="favorite" tabindex="0"></button>
+        <button class="favorite" tabindex="0"><img class="icon favorite-icon"></button>
       </div>
 
       <div class="card-footer">
