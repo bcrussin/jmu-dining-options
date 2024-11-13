@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/payment-options.css" />
+
+    <title>JMU Dining Options</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="locations.html">Locations</a>
+        <span class="nav-title">
+          <img src="images/jmu-logo.png" />
+          <h1>Dining</h1>
+        </span>
+        <a href="payment-options.html">Payment Options</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Payment Options</h1>
+
+      <div id="options-container">
+        <div class="card" onclick="viewPayment('punches')">
+          <h2>Meal Punches</h2>
+
+          <div class="card-content">
+            <p>
+              Each worth one punch or swipe. It provides access to several
+              locations, including E-Hall, D-Hall, and select locations that
+              offer Duke Deals and equivalencies.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewPayment('dining')">
+          <h2>Dining Dollars</h2>
+
+          <div class="card-content">
+            <p>
+              Dining Dollars can be used at any JMU Dining on-campus location,
+              including vending machines and concessions.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewPayment('flex')">
+          <h2>Flex</h2>
+
+          <div class="card-content">
+            <p>
+              FLEX is a declining balance account that connects you with the JMU
+              campus community. Similar to a checking account, purchases are
+              deducted automatically and the balance is displayed after each
+              transaction.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewPayment('card')">
+          <h2>Debit/Credit</h2>
+
+          <div class="card-content">
+            <p>
+              Credit/debit and mobile payments allow for faster service and an
+              enhanced customer experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewPayment('cash')">
+          <h2>Cash</h2>
+
+          <div class="card-content">
+            <p>
+              Many JMU dining locations have gone cashless, but you may still
+              pay with cash at a few select locations.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" onclick="viewPayment('gift')">
+          <h2>Gift Cards</h2>
+
+          <div class="card-content">
+            <p>Some franchise locations at JMU allow the use of gift cards.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts/payment-options.js"></script>
+  </body>
+</html>

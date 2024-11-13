@@ -14,6 +14,7 @@ const SEARCH_CLEAR = document.getElementById('search-clear');
 const FAVORITE_FILTER = document.getElementById('favorite-filter');
 const OPEN_FILTER = document.getElementById('open-filter');
 const LOCATION_FILTER = document.getElementById('location-filter');
+const PAYMENT_FILTER = document.getElementById('payment-filter');
 
 const IMAGE_FOLDER = 'images/restaurants/';
 const LOCATIONS_FOLDER = 'images/maps/';
@@ -24,15 +25,16 @@ const LOCATION_NAMES = {
     'east-campus': 'East Campus'
 }
 
-const LOCATION_MAP_ROOT = "https://map.jmu.edu/?id=1869#!ct/49647?s/";
+const LOCATION_MAP_ROOT = "https://map.jmu.edu/?id=1869#!ct/49647";
 const LOCATION_MAP_PARAMS = {
-    'all': '',
-    'd-hall': 'm/592884?s/',
-    'dukes-dining': 'm/592885?s/',
-    'east-campus': '?m/592957'
+    'all': '?s/',
+    'd-hall': '?m/592884?s/',
+    'dukes-dining': '?m/592885?s/',
+    'east-campus': '?m/592957?s/'
 }
 
-const CLOSING_SOON_THRESHOLD = 30;
+const REFRESH_INTERVAL = 60000; // milliseconds
+const CLOSING_SOON_THRESHOLD = 30; // minutes
 
 let currDay;
 
@@ -42,15 +44,6 @@ let restaurantsFiltered = [];
 
 let selectedRestaurant;
 
-DETAILS_BACKDROP.addEventListener('pointerup', (e) => {
-    closeDetails();
-})
-
-window.addEventListener('click', (e) => {
-    if (!!selectedRestaurant && e.target == document.documentElement) closeDetails();
-});
-
-const currentScript = document.currentScript;
 window.onload = () => {
     SEARCH_FILTER.value = "";
 
@@ -73,15 +66,33 @@ window.onload = () => {
 
             resetFilters();
             let params = new URLSearchParams(window.location.search);
+
             let location = params.get('location');
             updateLocation(location);
+
+            let payment = params.get('payment') ?? "";
+            PAYMENT_FILTER.value = payment;
+
             filterRestaurants();
 
             // restaurantsFiltered = restaurants;
 
             window.history.pushState({}, "", window.location.pathname);
+
+            setInterval(() => {
+                updateStatuses();
+            }, REFRESH_INTERVAL)
         });
 }
+
+window.addEventListener('click', (e) => {
+    if (!!selectedRestaurant && e.target == document.documentElement) closeDetails();
+});
+
+DETAILS_BACKDROP.addEventListener('pointerup', (e) => {
+    closeDetails();
+});
+
 
 /* DATA HANDLING */
 
@@ -104,7 +115,10 @@ function editRestaurant(newData) {
     }
 }
 
+
 /* FILTERING FUNCTIONS */
+
+// Update the sidebar map and target based on filter value
 function updateLocation(location) {
     if (!!location) LOCATION_FILTER.value = location;
     location = location ?? LOCATION_FILTER.value;
@@ -118,6 +132,7 @@ function updateLocation(location) {
     LOCATION_LINK.href = LOCATION_MAP_ROOT + mapParam;
 }
 
+// Exclude any restaurants that do not match the criteria in the sidebar
 function filterRestaurants() {
     updateLocation();
 
@@ -131,6 +146,9 @@ function filterRestaurants() {
             return accumulator;
 
         if (!!LOCATION_FILTER.value && curr.location != LOCATION_FILTER.value)
+            return accumulator;
+
+        if (!!PAYMENT_FILTER.value && !getPaymentOptions(curr).includes(PAYMENT_FILTER.value))
             return accumulator;
 
         accumulator[curr.id] = curr;
@@ -171,6 +189,7 @@ function resetFilters() {
     SEARCH_FILTER.value = "";
     FAVORITE_FILTER.checked = false;
     OPEN_FILTER.checked = false;
+    PAYMENT_FILTER.value = "";
     LOCATION_FILTER.value = "";
     updateLocation();
 
@@ -199,6 +218,71 @@ function updateCards(data) {
     } else {
         CARDS_PLACEHOLDER.style.display = 'block';
         CARDS_CONTAINER.style.display = 'none';
+    }
+}
+
+function updateStatuses() {
+    let cards = CARDS_CONTAINER.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        let id = card.id.slice(0, -5);
+        let restaurant = restaurants[id];
+        let status = getStatus(restaurant);
+
+        let statusText = card.querySelector('.status');
+        statusText.textContent = status.name;
+        statusText.className = 'status';
+        statusText.classList.add(status.class);
+    })
+}
+
+function getPaymentOptions(data) {
+    data = data.payment ?? data;
+    console.log(data)
+
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    return [];
+}
+
+function getStatus(restaurant) {
+    let status = "CLOSED";
+    let statusClass = "closed";
+    let hours = 'All Day';
+
+    let schedule = Object.keys(restaurant.hours);
+    for (let group of schedule) {
+        let scheduleGroup = group.split(',');
+        if (scheduleGroup.includes(currDay)) {
+            let hoursArray = restaurant.hours[scheduleGroup].split('-');
+
+            let open = stringToTime(hoursArray[0]);
+            let close = stringToTime(hoursArray[1]);
+
+            let openFormatted = timeToString(open);
+            let closeFormatted = timeToString(close);
+
+            if (!!openFormatted && !!closeFormatted) {
+                hours = openFormatted + '-' + closeFormatted;
+            }
+
+            restaurant.isOpen = isOpen(open, close);
+            if (restaurant.isOpen && close - new Date() < Math.floor(CLOSING_SOON_THRESHOLD * 1000 * 60)) {
+                status = 'CLOSING SOON';
+                statusClass = 'closing';
+            } else {
+                status = restaurant.isOpen ? 'OPEN' : 'CLOSED';
+                statusClass = status.toLowerCase();
+            }
+        }
+    }
+
+    return {
+        name: status,
+        class: statusClass,
+        hours: hours
     }
 }
 
@@ -259,46 +343,17 @@ function generateCard(data) {
     /* Footer */
     let footer = card.querySelector('.card-footer');
 
-    let hours = 'All Day';
-    let open, close;
-    let statusClass = 'closed';
-    let status = 'CLOSED';
-    let schedule = Object.keys(data.hours);
-    for (let group of schedule) {
-        let scheduleGroup = group.split(',');
-        if (scheduleGroup.includes(currDay)) {
-            let hoursArray = data.hours[scheduleGroup].split('-');
-
-            open = stringToTime(hoursArray[0]);
-            close = stringToTime(hoursArray[1]);
-
-            let openFormatted = timeToString(open);
-            let closeFormatted = timeToString(close);
-
-            if (!!openFormatted && !!closeFormatted) {
-                hours = openFormatted + '-' + closeFormatted;
-            }
-
-            data.isOpen = isOpen(open, close);
-            if (data.isOpen && close - new Date() < Math.floor(CLOSING_SOON_THRESHOLD * 1000 * 60)) {
-                status = 'CLOSING SOON';
-                statusClass = 'closing';
-            } else {
-                status = data.isOpen ? 'OPEN' : 'CLOSED';
-                statusClass = status.toLowerCase();
-            }
-        }
-    }
+    let status = getStatus(data);
 
     let hoursText = card.querySelector('.hours');
     hoursText.classList.add('hours');
-    hoursText.textContent = hours;
+    hoursText.textContent = status.hours;
 
     let statusText = card.querySelector('.status');
     // statusText.classList.add('status');
-    statusText.textContent = status;
+    statusText.textContent = status.name;
     statusText.className = 'status';
-    statusText.classList.add(statusClass);
+    statusText.classList.add(status.class);
 
     // footer.appendChild(statusText);
     // footer.appendChild(hoursText);

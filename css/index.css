@@ -1,6 +1,9 @@
 main {
     flex: 1;
     min-height: 0;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: stretch;
 }
@@ -31,14 +34,27 @@ aside {
     color: white;
 }
 
+#location-link {
+    position: relative;
+}
+
 #location-image {
     aspect-ratio: 1;
     object-fit: cover;
     width: 100%;
     max-height: 600px;
     margin-top: 0.5lh;
+    outline: 2px solid transparent;
     border-radius: 8px;
-    cursor: pointer;
+    cursor: pointer !important;
+}
+
+#location-image:is(:hover, :focus-visible) {
+    outline-color: #007AFF;
+}
+
+#location-image-hint {
+    font-size: x-small;
 }
 
 #filters {
@@ -141,23 +157,16 @@ aside {
 
 .card {
     position: relative;
-    border: 2px solid #450084;
-    outline: 2px solid transparent;
-    box-shadow: 0 0 8px #00000040;
-    border-radius: 8px;
     margin: 8px;
     text-align: center;
     height: fit-content;
     min-height: 160px;
     max-height: 800px;
     overflow: hidden;
-    cursor: pointer;
-
-    transition: outline-color 0.2s;
 }
 
 .card:hover {
-    outline-color: #450084;
+    outline-color: #007AFF;
 }
 
 .card-header {
@@ -251,7 +260,7 @@ aside {
     width: fit-content;
     border-top-right-radius: 8px;
     background-color: white;
-    padding: 8px 16px;
+    padding: 8px 12px;
     text-align: left;
     box-shadow: 0 0 8px #000000a0;
 }
@@ -403,6 +412,7 @@ aside {
     background-color: #450084;
 }
 
+/* Sidebar becomes a vertical drop-down on narrow screens */
 @media screen and (max-width: 800px) {
     aside {
         position: relative;
@@ -432,10 +442,6 @@ aside {
     .icon-text {
         display: flex;
         justify-content: space-between;
-    }
-
-    .icon-text > * {
-        flex-basis: 100%;
     }
 
     #sidebar-arrow {

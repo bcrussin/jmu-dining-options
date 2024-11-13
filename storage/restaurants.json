@@ -5,6 +5,7 @@
             "id": "d-hall",
             "description": "<b>Options:</b> Deli, Hen & Harvest, North (Homestyle), Asian / Fire Wok, True Balance, Southwest, Plant Forward, Pizza, Bakery",
             "address": "150 Bluestone Drive, 2nd Floor Harrisonburg, VA 22807",
+            "payment": ["punches", "dining", "flex", "card", "cash"],
             "hours": {
                 "0,1,2,3,4,5,6": "7:00-20:00"
             }
@@ -14,6 +15,7 @@
             "id": "market-64",
             "description": "<b>Options:</b> arbecue Bowls, Gourmet Sandwiches; Soup; Grab-and-Go; Java City® Coffee and Espresso ",
             "address": "150 Bluestone Drive, 2nd Floor Harrisonburg, VA 22807",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "0,6": "12:00-20:00",
                 "1,2,3,4": "8:00-20:00",
@@ -25,7 +27,7 @@
             "id": "freshens-d-hall",
             "description": "Freshens Fresh Food Studio is a healthy, fast casual restaurant offering prepared to order food inspired by fresh ingredients and authentic flavors. Our focus is on customization and speed of service. Our menu includes fresh tossed salads, global rice bowls, and fresh blended smoothies.",
             "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
-            "payment": "['punches', 'deals', 'dining', 'flex', 'card', 'cash']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-21:00",
                 "0,6": "Closed"
@@ -36,6 +38,7 @@
             "id": "steak-n-shake",
             "description": "Steak ‘N Shake® features items such as Steakburgers, chicken fingers, crispy fries, classic and specialty milkshakes, featuring a late-night walk-up window.",
             "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "19:00-23:00",
                 "0,6": "17:00-24:00"
@@ -46,6 +49,7 @@
             "id": "chick-fil-a",
             "description": "Fresh hot chicken sandwiches and nuggets, wraps, salads, waffle fries, coleslaw, party platters, beverages, and desserts—even milkshakes and sundaes! Breakfast biscuits and hash browns to start your day.",
             "address": "150 Bluestone Drive, 1st Floor Harrisonburg, VA 22807",
+            "payment": ["punches", "dining", "flex", "card", "cash"],
             "hours": {
                 "1,2,3,4,5,6": "11:00-22:00"
             }
@@ -56,7 +60,7 @@
             "name": "The Den",
             "id": "the-den",
             "description": "The Den by Denny's was developed especially for the college-age demographic. Lots of delicious menu items to satisfy your old-school diner cravings.",
-            "payment": "['deals', 'dining', 'flex', 'card']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4": "11:00-24:00",
                 "5": "11:00-:21:00"
@@ -66,7 +70,7 @@
             "name": "Tacodillo",
             "id": "tacodillo",
             "description": "Enjoy delicious Tex-Mex food! All menu items are a punch. Pick nachos, tacos or a quesadilla with your choice of protein.",
-            "payment": "['deals', 'dining', 'flex', 'card']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4": "11:00-20:00",
                 "5": "11:00-:19:00"
@@ -76,7 +80,7 @@
             "name": "Oath Pizza",
             "id": "oath-pizza",
             "description": "Oath Pizza is a socially-conscious, purpose-driven pizza company working to make a lasting, positive impact on the world. Oath serves premium personal pizzas, grilled and seared in avocado oil and topped with thoughtfully-sourced ingredients.",
-            "payment": "['deals', 'dining', 'flex', 'card']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-15:00"
             }
@@ -85,7 +89,7 @@
             "name": "Panda Express",
             "id": "panda-express",
             "description": "Panda Express is an American fast-casual restaurant chain known for its Asian-inspired dishes, providing bold flavors using fresh ingredients.",
-            "payment": "['deals', 'dining', 'flex', 'card']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-15:00"
             }
@@ -94,7 +98,7 @@
             "name": "Blue Ridge Bowl",
             "id": "blue-ridge-bowl",
             "description": "Fresh bowls and ancient grain creations! Blue Ridge Bowl will become your new hot spot on campus for a savory, feel good meal. All menu items were developed by our culinary team with the JMU students in mind!",
-            "payment": "['deals', 'dining', 'flex', 'card']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-15:00"
             }
@@ -103,7 +107,7 @@
             "name": "Panera",
             "id": "panera",
             "description": "At Panera, we believe in serving delicious, freshly prepared, Clean dishes made with carefully selected ingredients that we would be proud to serve our own families. Our menu, crafted by chefs and bakers, features classic, comforting dishes, each with an intriguing twist.",
-            "payment": "['dining', 'flex', 'card', 'cash', 'gift']",
+            "payment": ["dining", "flex", "card", "gift"],
             "hours": {
                 "1,2,3,4": "7:30-19:00",
                 "5": "7:30-15:00",
@@ -116,7 +120,7 @@
             "name": "Festival",
             "id": "festival",
             "description": "<b>Options:</b> Wings, Burger+ Fries; Chopsticks (Asian); Ever Grains (Salads); Sambazon (Acai Bowls); Restaurant Rotation station; Baked Goods; Grab-and-Go and Drip Coffee.",
-            "payment": "['punches', 'deals', 'dining', 'flex', 'card', 'cash']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-20:00",
                 "0,6": "4:00-21:00"
@@ -126,10 +130,23 @@
             "name": "E-Hall",
             "id": "e-hall",
             "description": "<b>Options:</b> Tandoori Specialties; Hibachi/Grain Bowls; Stone-Oven Pizza; Custom Pasta; Flame-Grilled Favorites; Home-Style Classics; Soups, Sandwiches, and Salads; Allergen Solutions Station; Vegan Station; Housemade Ice Cream and Desserts ",
-            "payment": "['punchs', 'dining', 'flex', 'card', 'cash']",
+            "payment": ["punches", "dining", "flex", "card", "cash"],
             "hours": {
                 "1,2,3,4,5": "7:00-20:00",
                 "0,6": "10:00-20:00"
+            }
+        },
+        {
+            "name": "Starbucks (Rose)",
+            "id": "starbucks-rose",
+            "description": "Fuel your study sessions with your favorite coffee, beverages, warm sandwiches and pastries. ",
+            "address": "1251 Carrier Dr, Harrisonburg, VA 22807",
+            "payment": ["dining", "flex", "card"],
+            "hours": {
+                "1,2,3,4": "7:30-19:00",
+                "5": "7:30-17:00",
+                "6": "12:00-16:00",
+                "0": "10:00-19:00"
             }
         },
         {
@@ -137,7 +154,7 @@
             "id": "freshens-urec",
             "description": "Freshens Fresh Food Studio® is a healthy, fast casual restaurant offering prepared to order food inspired by fresh ingredients and authentic flavors. Our focus is on customization and speed of service. Our menu includes fresh tossed salads, global rice bowls, fresh blended smoothies, stuffed baguettes, and epic mac and cheese.",
             "address": "701 Driver Drive Harrisonburg, VA 22807",
-            "payment": "['punches', 'deals', 'dining', 'flex', 'card', 'cash']",
+            "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:30-19:30",
                 "0,6": "Closed"

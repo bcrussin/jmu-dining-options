@@ -17,7 +17,7 @@
           <img src="images/jmu-logo.png" />
           <h1>Dining</h1>
         </span>
-        <a>Payment Options</a>
+        <a href="payment-options.html">Payment Options</a>
         <a href="about.html">About</a>
       </nav>
     </header>
@@ -30,7 +30,12 @@
             <h2 id="location-name">D-Hall</h2>
             <img id="sidebar-arrow" src="images/expand-arrow.svg"></div>
           </span>
-          <a id="location-link" target="_blank"><img id="location-image" src="images/d-hall-location.jpeg" /></a>
+
+          <a id="location-link" target="_blank">
+            <img id="location-image" src="images/d-hall-location.jpeg" />
+          </a>
+
+          <span id="location-image-hint">&uarr; Click to open interactive map &uarr;</span>
         </div>
 
         <div id="search-container">
@@ -63,6 +68,17 @@
             <option value="d-hall">D-Hall</option>
             <option value="dukes-dining">Dukes Dining</option>
             <option value="east-campus">East Campus</option>
+          </select>
+
+          <label for="payment-filter">Payment Options: </label>
+          <select id="payment-filter" onchange="filterRestaurants()">
+            <option selected value>All Options</option>
+            <option value="punches">Meal Punches</option>
+            <option value="dining">Dining Dollars</option>
+            <option value="flex">Flex</option>
+            <option value="card">Debit/Credit</option>
+            <option value="cash">Cash</option>
+            <option value="gift">Gift Card</option>
           </select>
         </form>
 
