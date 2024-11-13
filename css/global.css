@@ -62,6 +62,11 @@ nav a:visited {
     text-decoration: none;
 }
 
+nav a:hover {
+    color: gold;
+    text-decoration: underline;
+}
+
 .nav-title {
     display: flex;
     align-items: center;
@@ -91,10 +96,6 @@ header img {
 
 header a {
     cursor: pointer;
-}
-
-header a:hover {
-    color: gold;
 }
 
 h1, h2 {

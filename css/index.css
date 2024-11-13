@@ -165,10 +165,6 @@ aside {
     overflow: hidden;
 }
 
-.card:hover {
-    outline-color: #007AFF;
-}
-
 .card-header {
     padding: 12px;
     background-color: #450084;
