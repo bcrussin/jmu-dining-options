@@ -13,7 +13,7 @@
         {
             "name": "Market 64",
             "id": "market-64",
-            "description": "<b>Options:</b> arbecue Bowls, Gourmet Sandwiches; Soup; Grab-and-Go; Java City® Coffee and Espresso ",
+            "description": "<b>Options:</b> Barbecue Bowls, Gourmet Sandwiches; Soup; Grab-and-Go; Java City® Coffee and Espresso ",
             "address": "150 Bluestone Drive, 2nd Floor Harrisonburg, VA 22807",
             "payment": ["punches", "dining", "flex", "card"],
             "hours": {
@@ -123,7 +123,7 @@
             "payment": ["punches", "dining", "flex", "card"],
             "hours": {
                 "1,2,3,4,5": "11:00-20:00",
-                "0,6": "4:00-21:00"
+                "0,6": "16:00-21:00"
             }
         },
         {

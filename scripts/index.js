@@ -93,6 +93,15 @@ DETAILS_BACKDROP.addEventListener('pointerup', (e) => {
     closeDetails();
 });
 
+const PAYMENT_OPTIONS = document.querySelectorAll('.payment-option');
+PAYMENT_OPTIONS.forEach(elem => {
+    elem.addEventListener('click', () => {
+        let method = elem.id.replace('details-', '');
+        PAYMENT_FILTER.value = method;
+        closeDetails();
+        filterRestaurants();
+    });
+})
 
 /* DATA HANDLING */
 
@@ -332,7 +341,7 @@ function generateCard(data) {
     if (!!data.isFavorited) favorite.classList.add('selected');
 
     let favoriteIcon = card.querySelector('.favorite-icon');
-    favoriteIcon.src = !!data.isFavorited ? 'images/heart-filled.svg' : 'images/heart-outline.svg';
+    favoriteIcon.src = !!data.isFavorited ? 'images/icons/heart-filled.svg' : 'images/icons/heart-outline.svg';
 
     favorite.addEventListener('click', (e) => {
         favoriteRestaurant(data.id);
@@ -432,6 +441,16 @@ function openDetails(id) {
         document.getElementById('details-address-icon').style.display = 'block';
 
     document.getElementById('details-content').innerHTML = restaurant.description;
+
+    // Only show payment methods allowed at this restaurant
+    PAYMENT_OPTIONS.forEach(elem => {
+        let method = elem.id.replace('details-', '');
+        if (restaurant.payment?.includes(method)) {
+            elem.style.display = 'flex';
+        } else {
+            elem.style.display = 'none';
+        }
+    });
 
     DETAILS_DIALOG.classList.add('open');
     DETAILS_BACKDROP.classList.add('open');
