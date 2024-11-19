@@ -20,6 +20,9 @@ main {
     box-sizing: border-box;
 }
 
+
+/* HEADER & NAVBAR */
+
 header {
     color: white;
     background-color: #450084;
@@ -40,6 +43,53 @@ header {
 #nav-expand {
     display: none;
 }
+
+header img {
+    min-height: 0;
+    display: inline;
+    height: 1.6lh;
+}
+
+header a {
+    cursor: pointer;
+}
+
+nav {
+    --nav-spacing: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a,
+nav a:visited {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    margin: 4px var(--nav-spacing);
+}
+
+/* Bullet points between nav items */
+nav a:not(:first-child)::before {
+    position: absolute;
+    content: "\2022";
+    top: 0;
+    left: calc(var(--nav-spacing) * -1);
+    height: 100%;
+
+    color: white;
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+nav a:hover {
+    color: gold;
+    text-decoration: underline;
+}
+
+
+/* GENERAL STYLES */
 
 button {
     background-color: white;
@@ -65,26 +115,7 @@ a {
     color: #007AFF;
 }
 
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav a,
-nav a:visited {
-    color: white;
-    text-decoration: none;
-    margin: 4px 12px;
-}
-
-nav a:hover {
-    color: gold;
-    text-decoration: underline;
-}
-
-.icon-text {
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,15 +129,6 @@ nav a:hover {
     object-fit: contain;
 }
 
-header img {
-    min-height: 0;
-    display: inline;
-    height: 1.6lh;
-}
-
-header a {
-    cursor: pointer;
-}
 
 h1, h2 {
     margin: 0;
@@ -247,6 +269,10 @@ h1, h2 {
     nav.expanded {
         visibility: visible;
         transform: translateX(0);
+    }
+
+    nav a::before {
+        content: none !important;
     }
 
     main {
