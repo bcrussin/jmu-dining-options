@@ -46,7 +46,7 @@ header {
 header img {
     min-height: 0;
     display: inline;
-    height: 1.6lh;
+    height: 36px;
 }
 
 header a {
@@ -123,8 +123,8 @@ a {
 
 .icon {
     min-height: 0;
-    height: 0.9lh;
-    max-height: 1lh;
+    height: 24px;
+    max-height: 24px;
     max-width: 1lh;
     vertical-align: middle;
     object-fit: contain;

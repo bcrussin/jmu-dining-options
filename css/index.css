@@ -538,7 +538,7 @@ aside {
         display: block;
         flex: 0 0;
         color: white;
-        height: 1lh;
+        height: 24px;
 
         transition: transform 0.2s;
     }
