@@ -2,10 +2,6 @@ h1 {
     text-align: center;
 }
 
-h1 {
-    color: #3b056d;
-}
-
 #options-container {
     position: relative;
     display: grid;
