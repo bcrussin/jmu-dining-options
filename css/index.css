@@ -71,6 +71,10 @@ aside {
     justify-self: right;
 }
 
+#filters select {
+    width: 100%;
+}
+
 #search-container {
     display: flex;
     justify-content: stretch;
@@ -411,7 +415,7 @@ aside {
     justify-content: center;
     align-items: center;
     gap: 4px;
-    padding: 2px 8px;
+    padding: 4px 8px;
     border-radius: 8px;
     font-size: small;
     cursor: pointer;
@@ -427,15 +431,56 @@ aside {
     aspect-ratio: 1;
 }
 
-#details button {
+#details #details-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
     margin-top: 1lh;
-    padding: 8px 12px;
-    border: none;
+    font-size: small;
+}
+
+#details #details-controls > * {
+    position: relative;
+    padding: 8px 16px;
+    border: 2px solid #450084;
     border-radius: 999px;
     cursor: pointer;
+    transform: translateY(0);
+    box-shadow: 0 0 0 0 #450084;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
+#details button {
     color: white;
     background-color: #450084;
+}
+
+#details #view-on-map {
+    color: #450084;
+    background-color: white;
+    text-decoration: none !important;
+}
+
+#details #details-controls > *:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 0 0 #450084;
+}
+
+#details button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1px 0 0 white, 0 4px 0 0 #450084 !important;
+}
+
+#details #details-controls > *:hover:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -8px;
+    right: 0;
+    top: 0;
+    z-index: -1;
 }
 
 /* Sidebar becomes a vertical drop-down on narrow screens */
@@ -494,6 +539,7 @@ aside {
         min-height: 0;
         max-height: 50vh;
         display: none;
+        margin: 0 auto;
     }
 
     aside:not(.expanded) #filters,
