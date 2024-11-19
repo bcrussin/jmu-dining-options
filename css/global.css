@@ -46,7 +46,7 @@ header {
 header img {
     min-height: 0;
     display: inline;
-    height: 1.6lh;
+    height: 40px;
 }
 
 header a {
