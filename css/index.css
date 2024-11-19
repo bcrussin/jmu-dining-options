@@ -554,7 +554,7 @@ aside {
         transform: rotate(90deg);
     }
 
-    aside *:is(#location-image, #location-image-hint) {
+    aside *:is(#location-link, #location-image-hint) {
         flex: 0 1 auto;
         width: 95%;
         min-height: 0;
@@ -568,7 +568,7 @@ aside {
         display: none;
     }
 
-    aside.expanded *:is(#location-image, #location-image-hint) {
+    aside.expanded *:is(#location-link, #location-image-hint) {
         display: block;
     }
 
