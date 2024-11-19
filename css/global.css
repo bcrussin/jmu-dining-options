@@ -123,8 +123,8 @@ a {
 
 .icon {
     min-height: 0;
-    height: 24px;
-    max-height: 24px;
+    height: 0.9lh;
+    max-height: min(1lh, 2rem);
     max-width: 1lh;
     vertical-align: middle;
     object-fit: contain;
