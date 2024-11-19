@@ -1,3 +1,3 @@
 function viewPayment(location) {
-    window.location.href = 'index.html?payment=' + location;
+    window.location.href = '../index.html?payment=' + location;
 }
