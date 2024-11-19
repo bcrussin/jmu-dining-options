@@ -214,8 +214,18 @@
             "address": "701 Driver Drive Harrisonburg, VA 22807",
             "payment": ["punches", "dining", "flex", "card"],
             "hours": {
-                "1,2,3,4,5": "11:30-19:30",
-                "0,6": "Closed"
+                "1,2,3,4,5": "11:30-19:30"
+            }
+        },
+        {
+            "name": "Tenders. Love. Chicken.",
+            "id": "tenders-love-chicken",
+            "description": "Tenders, Love & Chicken is located in the Atlantic Union Bank Center. We focus on one thing, hand-crafted amazing-tasting chicken!",
+            "address": "645 University Boulevard, Harrisonburg, VA 22801",
+            "mapID": "?m/592902",
+            "payment": ["punches", "dining", "flex", "card"],
+            "hours": {
+                "1,2,3,4,5": "17:00-22:00"
             }
         }
     ]
