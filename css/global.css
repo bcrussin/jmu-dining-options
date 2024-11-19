@@ -46,7 +46,7 @@ header {
 header img {
     min-height: 0;
     display: inline;
-    height: 40px;
+    height: 1.6lh;
 }
 
 header a {
@@ -123,19 +123,16 @@ a {
 
 .icon {
     min-height: 0;
+    height: 0.9lh;
     max-height: 1lh;
     max-width: 1lh;
+    vertical-align: middle;
     object-fit: contain;
 }
 
 
 h1, h2 {
     margin: 0;
-}
-
-.icon {
-    height: 0.9lh;
-    vertical-align: middle;
 }
 
 
