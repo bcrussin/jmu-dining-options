@@ -435,10 +435,10 @@ function openDetails(id) {
     document.getElementById('details-name').textContent = restaurant.name;
     document.getElementById('details-address').textContent = restaurant.address;
     document.getElementById('details-address').href = "https://www.google.com/maps/search/?api=1&query=" + restaurant.address;
-    if (!restaurant.address)
-        document.getElementById('details-address-icon').style.display = 'none';
-    else
+    if (!!restaurant.address)
         document.getElementById('details-address-icon').style.display = 'block';
+    else
+        document.getElementById('details-address-icon').style.display = 'none';
 
     document.getElementById('details-content').innerHTML = restaurant.description;
 
@@ -451,6 +451,13 @@ function openDetails(id) {
             elem.style.display = 'none';
         }
     });
+
+    if (!!restaurant.mapID) {
+        document.getElementById('view-on-map').style.display = 'block';
+        document.getElementById('view-on-map').href = LOCATION_MAP_ROOT + restaurant.mapID;
+    } else {
+        document.getElementById('view-on-map').style.display = 'none';
+    }
 
     DETAILS_DIALOG.classList.add('open');
     DETAILS_BACKDROP.classList.add('open');
