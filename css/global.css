@@ -1,5 +1,4 @@
 :root {
-    line-height: 18px;
     text-size-adjust: none;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
@@ -131,8 +130,8 @@ a {
 .icon {
     min-height: 0;
     height: 0.9lh;
-    max-height: 1lh;
-    max-width: 1lh;
+    max-height: 24px;
+    max-width: 24px;
     vertical-align: middle;
     object-fit: contain;
 }
@@ -156,7 +155,7 @@ h1, h2 {
 .toggle {
     position: relative;
     display: inline-block;
-    height: 1lh;
+    height: 20px;
     aspect-ratio: 2 / 1;
     background-color: #888888;
     border-radius: 999px;
@@ -246,6 +245,7 @@ h1, h2 {
 
     #nav-expand-icon {
         height: 1.2lh;
+        max-height: 24px;
         margin: auto;
     }
 
