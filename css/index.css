@@ -48,7 +48,6 @@ aside {
 }
 
 #location-image {
-    aspect-ratio: 1;
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -56,10 +55,6 @@ aside {
     outline: 2px solid transparent;
     border-radius: 8px;
     cursor: pointer !important;
-}
-
-#location-link {
-    outline: 2px solid red !important;
 }
 
 #location-image:is(:hover, :focus-visible) {
