@@ -263,6 +263,7 @@ h1, h2 {
         align-items: center;
         gap: 8px;
 
+        font-size: x-large;
         background-color: #450084;
         z-index: -1;
         transform: translateX(100%);
