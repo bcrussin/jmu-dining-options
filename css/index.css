@@ -151,6 +151,10 @@ aside {
     padding: 8px;
 }
 
+
+
+/* RESTAURANT CARDS */
+
 #cards-placeholder {
     display: none;
     font-size: large;
@@ -228,6 +232,7 @@ aside {
     user-select: none;
 }
 
+/* Default to white icon with high brightness */
 .card-options button .icon {
     width: 18px;
     height: 18px;
@@ -239,6 +244,7 @@ aside {
     background-color: white;
 }
 
+/* Set favorited icons to red (original SVG color) */
 .card-options :is(.favorite.selected, .favorite:hover, .favorite:focus-visible) .icon {
     filter: brightness(1);
 }
@@ -286,15 +292,6 @@ aside {
     opacity: 0.6;
 }
 
-.card.expanded {
-
-    overflow: visible;
-}
-
-.card.expanded .card-content {
-    max-height: 100%;
-}
-
 .card:focus-visible {
     outline: 2px solid #007AFF;
 }
@@ -324,6 +321,10 @@ aside {
     margin: 8px 0;
 }
 
+
+
+/* DETAILS MODAL */
+
 #details-modal {
     display: block;
 
@@ -349,9 +350,7 @@ aside {
 
 #details-modal.open {
     visibility: visible;
-
     transform: scale(1);
-
 }
 
 #details-modal::backdrop {
@@ -385,6 +384,13 @@ aside {
 
 #details h2 {
     text-align: center;
+}
+
+#details .card-options {
+    opacity: 1 !important;
+    background-color: #450084;
+    padding: 6px;
+    border-bottom-left-radius: 8px;
 }
 
 #details #details-address {
@@ -452,7 +458,7 @@ aside {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#details button {
+#details #close-details {
     color: white;
     background-color: #450084;
 }
@@ -468,7 +474,7 @@ aside {
     box-shadow: 0 4px 0 0 #450084;
 }
 
-#details button:hover {
+#details #close-details:hover {
     transform: translateY(-4px);
     box-shadow: 0 1px 0 0 white, 0 4px 0 0 #450084 !important;
 }
@@ -482,6 +488,10 @@ aside {
     top: 0;
     z-index: -1;
 }
+
+
+
+/* MEDIA QUERIES */
 
 /* Sidebar becomes a vertical drop-down on narrow screens */
 @media screen and (max-width: 800px) {

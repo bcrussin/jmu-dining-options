@@ -118,8 +118,16 @@
     <!-- Restaurant details modal -->
     <div id="details-backdrop"></div>
     <dialog id="details-modal">
+
       <div id="details">
+        <div class="card-options">
+          <button id="details-favorite" class="favorite" tabindex="0" onclick="favoriteRestaurant()">
+            <img id="details-favorite-icon" class="icon favorite-icon">
+          </button>
+        </div>
+
         <h2 id="details-name"></h2>
+
         <span class="icon-text">
           <img class="icon" id="details-address-icon" src="images/icons/pin.svg" />
           <a id="details-address" target="_blank"></a>
@@ -161,6 +169,7 @@
           <button id="close-details" onclick="closeDetails()">Close</button>
         </div>
       </div>
+
     </dialog>
 
     <script src="scripts/index.js"></script>
