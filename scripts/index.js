@@ -343,7 +343,7 @@ function generateCard(data) {
     if (!!data.isFavorited) favorite.classList.add('selected');
 
     let favoriteIcon = card.querySelector('.favorite-icon');
-    favoriteIcon.src = !!data.isFavorited ? 'images/icons/heart-filled.svg' : 'images/icons/heart-outline.svg';
+    favoriteIcon.src = getFavoriteIcon(!!data.isFavorited);
 
     favorite.addEventListener('click', (e) => {
         favoriteRestaurant(data.id);
@@ -378,6 +378,10 @@ function generateCard(data) {
     } else {
         CARDS_CONTAINER.appendChild(card);
     }
+}
+
+function getFavoriteIcon(isFavorited) {
+    return !!isFavorited ? 'images/icons/heart-filled.svg' : 'images/icons/heart-outline.svg'
 }
 
 /* UTILITY FUNCTIONS */
@@ -443,6 +447,9 @@ function openDetails(id) {
         document.getElementById('details-address-icon').style.display = 'none';
 
     document.getElementById('details-content').innerHTML = restaurant.description;
+    console.log(restaurant)
+
+    updateDetailsOptions();
 
     // Only show payment methods allowed at this restaurant
     PAYMENT_OPTIONS.forEach(elem => {
@@ -473,11 +480,30 @@ function closeDetails() {
     DETAILS_DIALOG.close();
 }
 
+function updateDetailsOptions() {
+    if (selectedRestaurant == undefined) return;
+
+    let favoriteButton = document.getElementById('details-favorite');
+    let favoriteIcon = document.getElementById('details-favorite-icon');
+
+    favoriteIcon.src = getFavoriteIcon(selectedRestaurant.isFavorited);
+
+    if (selectedRestaurant.isFavorited) favoriteButton.classList.add('selected');
+    else favoriteButton.classList.remove('selected');
+}
+
 function favoriteRestaurant(id, isFavorited) {
+    id = id ?? selectedRestaurant?.id;
     let card = restaurants[id];
+
+    if (card == undefined) return;
 
     if (isFavorited == undefined) isFavorited = !card.isFavorited;
     card.isFavorited = isFavorited;
+
+    if (selectedRestaurant?.id == card.id) {
+        updateDetailsOptions();
+    }
 
     editRestaurant(card);
     saveRestaurants();
