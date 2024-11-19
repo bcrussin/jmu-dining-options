@@ -125,7 +125,7 @@
             }
         }
     ],
-    "main-campus": [
+    "grace-street": [
         {
             "name": "Subway",
             "id": "subway",
@@ -157,6 +157,18 @@
             "payment": ["dining", "flex", "card"],
             "hours": {
                 "1,2,3,4": "8:00-15:00",
+                "5": "8:00-14:00"
+            }
+        },
+        {
+            "name": "Corner Bistro",
+            "id": "corner-bistro",
+            "description": "The Corner Bistro at Memorial Hall is located in the heart of the former Harrisonburg High School, featuring Java City Coffee and a bistro menu complete with a make-your-own deli, grill & soup menu. Hot Entrees include: Chicken Tenders, Hamburgers, Cheeseburgers & Veggie Burgers, Quesadillas, and sides. The newly renovated dining location also includes a variety of snack and beverage items. More than a grab and go location, enjoy the inviting dining and comfortable study spaces -- whether you're alone or in a group. <p>A hidden gem you won't want to miss, Corner Bistro's Standard Operating Hours are:</p> <ul><li>Java City: Monday - Thursday 8A-5P & Friday 8A-2P</li> <li>Grab & Go: Monday - Thursday 8A-6P & Friday 8A-2P</li> <li>Deli: Monday - Thursday 10:30A - 6P & Fri: 10:30A-2P</li> <li>Grill: Monday - Friday 10:30A-2P</li></ul>",
+            "address": "395 S High St, Harrisonburg, VA 22807",
+            "mapID": "?m/592883",
+            "payment": ["punches", "dining", "flex", "card"],
+            "hours": {
+                "1,2,3,4": "8:00-18:00",
                 "5": "8:00-14:00"
             }
         }

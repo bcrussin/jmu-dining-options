@@ -22,6 +22,7 @@ const LOCATION_NAMES = {
     'all': 'All Locations',
     'd-hall': 'D-Hall',
     'dukes-dining': 'Dukes Dining',
+    'grace-street': 'Grace Street',
     'east-campus': 'East Campus'
 }
 
@@ -30,6 +31,7 @@ const LOCATION_MAP_PARAMS = {
     'all': '?s/',
     'd-hall': '?m/592884?s/',
     'dukes-dining': '?m/592885?s/',
+    'grace-street': '?m/592972?s/',
     'east-campus': '?m/592957?s/'
 }
 
