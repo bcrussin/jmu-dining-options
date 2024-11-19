@@ -45,6 +45,7 @@ aside {
 
 #location-link {
     position: relative;
+    overflow: hidden;
 }
 
 #location-image {
@@ -556,7 +557,7 @@ aside {
     }
 
     aside *:is(#location-link, #location-image-hint) {
-        flex: 0 0 auto;
+        flex: 0 1 auto;
         width: 95%;
         min-height: 0;
         max-height: 50vh;
