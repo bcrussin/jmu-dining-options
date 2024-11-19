@@ -10,16 +10,20 @@
   </head>
   <body>
     <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="locations.html">Locations</a>
-        <span class="nav-title">
-          <img src="images/jmu-logo.png" />
-          <h1>Dining</h1>
-        </span>
-        <a href="payment-options.html">Payment Options</a>
-        <a href="about.html">About</a>
-      </nav>
+      <div id="header-content">
+        <img id="nav-title" src="images/jmu-logo.svg" />
+
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="locations.html">Locations</a>
+          <a href="payment-options.html">Payment Options</a>
+          <a href="about.html">About</a>
+        </nav>
+
+        <button id="nav-expand" onclick="toggleNavbar()">
+          <img id="nav-expand-icon" />
+        </button>
+      </div>
     </header>
 
     <main>
@@ -76,6 +80,7 @@
       </div>
     </main>
 
+    <script src="scripts/global.js"></script>
     <script src="scripts/locations.js"></script>
   </body>
 </html>

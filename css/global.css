@@ -23,7 +23,22 @@ main {
 header {
     color: white;
     background-color: #450084;
-    padding: 8px;
+    padding: 8px 24px;
+    z-index: 300;
+}
+
+#header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#nav-expand {
+    display: none;
 }
 
 button {
@@ -54,23 +69,19 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a,
 nav a:visited {
     color: white;
     text-decoration: none;
+    margin: 4px 12px;
 }
 
 nav a:hover {
     color: gold;
     text-decoration: underline;
-}
-
-.nav-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .icon-text {
@@ -89,9 +100,8 @@ nav a:hover {
 
 header img {
     min-height: 0;
-    filter: brightness(10);
     display: inline;
-    height: 1.4lh;
+    height: 1.6lh;
 }
 
 header a {
@@ -199,6 +209,46 @@ h1, h2 {
 }
 
 @media only screen and (max-width: 800px) {
+    #nav-expand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    #nav-expand-icon {
+        height: 1.2lh;
+        margin: auto;
+    }
+
+    nav {
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        background-color: #450084;
+        z-index: -1;
+        transform: translateX(100%);
+        transition: transform 0.3s, visibility 0.3s;
+    }
+
+    nav.expanded {
+        visibility: visible;
+        transform: translateX(0);
+    }
+
     main {
         flex-direction: column;
     }
