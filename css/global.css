@@ -29,10 +29,6 @@ header {
     z-index: 300;
 }
 
-img {
-    max-height: 4px !important;
-}
-
 #header-content {
     display: flex;
     justify-content: space-between;
@@ -127,16 +123,19 @@ a {
 
 .icon {
     min-height: 0;
-    height: 0.9lh;
-    vertical-align: middle;
-    max-height: 24px;
-    max-width: 24px;
+    max-height: 1lh;
+    max-width: 1lh;
     object-fit: contain;
 }
 
 
 h1, h2 {
     margin: 0;
+}
+
+.icon {
+    height: 0.9lh;
+    vertical-align: middle;
 }
 
 
@@ -153,7 +152,7 @@ h1, h2 {
 .toggle {
     position: relative;
     display: inline-block;
-    height: 1px;
+    height: 1lh;
     aspect-ratio: 2 / 1;
     background-color: #888888;
     border-radius: 999px;
@@ -242,7 +241,7 @@ h1, h2 {
     }
 
     #nav-expand-icon {
-        height: 1.2px;
+        height: 1.2lh;
         margin: auto;
     }
 

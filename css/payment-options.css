@@ -7,7 +7,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(200px, min(40%, 600px)), 1fr));
     grid-auto-rows: min-content;
-    margin-top: 1px;
+    margin-top: 1lh;
     padding: 8px;
     gap: 16px;
 }
