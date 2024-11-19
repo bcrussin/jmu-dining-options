@@ -1,5 +1,4 @@
 :root {
-    line-height: 1;
     text-size-adjust: none;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
@@ -131,7 +130,7 @@ a {
 .icon {
     min-height: 0;
     height: 0.9lh;
-    max-height: min(1lh, 2rem);
+    max-height: min(1lh, 24px);
     max-width: 1lh;
     vertical-align: middle;
     object-fit: contain;
