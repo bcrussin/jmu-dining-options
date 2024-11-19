@@ -539,7 +539,7 @@ aside {
         flex: 0 0;
         color: white;
         height: 1lh;
-        max-height: 24px;
+        max-height: 1lh;
 
         transition: transform 0.2s;
     }
