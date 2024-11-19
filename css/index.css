@@ -58,6 +58,10 @@ aside {
     cursor: pointer !important;
 }
 
+#location-link {
+    outline: 2px solid red !important;
+}
+
 #location-image:is(:hover, :focus-visible) {
     outline-color: #007AFF;
 }
