@@ -123,19 +123,16 @@ a {
 
 .icon {
     min-height: 0;
-    max-height: 1lh;
-    max-width: 1lh;
+    height: 0.9lh;
+    vertical-align: middle;
+    max-height: 24px;
+    max-width: 24px;
     object-fit: contain;
 }
 
 
 h1, h2 {
     margin: 0;
-}
-
-.icon {
-    height: 0.9lh;
-    vertical-align: middle;
 }
 
 
