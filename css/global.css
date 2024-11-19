@@ -136,6 +136,9 @@ a {
     object-fit: contain;
 }
 
+h1 {
+    color: #3b056d;
+}
 
 h1, h2 {
     margin: 0;

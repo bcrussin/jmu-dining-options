@@ -79,7 +79,7 @@ window.onload = () => {
 
             // restaurantsFiltered = restaurants;
 
-            window.history.pushState({}, "", window.location.pathname);
+            window.history.replaceState({}, "", window.location.pathname);
 
             setInterval(() => {
                 updateStatuses();
@@ -337,6 +337,7 @@ function generateCard(data) {
     /* Background Image */
     let image = card.querySelector('.card-image');
     image.src = IMAGE_FOLDER + data.id + '.jpg';
+    image.alt = "Image of " + data.name;
     /* ________________ */
 
     let favorite = card.querySelector('.card-options .favorite');

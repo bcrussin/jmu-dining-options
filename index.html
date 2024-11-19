@@ -11,17 +11,18 @@
   <body>
     <header>
       <div id="header-content">
-        <img id="nav-title" src="images/jmu-logo.svg" />
+        <img id="nav-title" alt="JMU Dining Logo" src="images/jmu-logo.svg" />
 
         <nav>
           <a href="index.html">Home</a>
           <a href="html/locations.html">Locations</a>
           <a href="html/payment-options.html">Payment Options</a>
-          <a href="html/about.html">About</a>
+          <a href="html/about-us.html">About Us</a>
+          <a href="html/credits.html">Credits</a>
         </nav>
 
         <button id="nav-expand" onclick="toggleNavbar()">
-          <img id="nav-expand-icon">
+          <img alt="Expand" id="nav-expand-icon">
         </button>
       </div>
     </header>
@@ -30,13 +31,13 @@
       <aside id="sidebar">
         <div class="location-info" onclick="toggleSidebar()">
           <span class="flex-center">
-            <img class="icon" src="images/icons/pin.svg" id="location-pin" />
+            <img aria-label="pin icon" class="icon" src="images/icons/pin.svg" id="location-pin" />
             <h2 id="location-name">D-Hall</h2>
-            <img id="sidebar-arrow" src="images/icons/expand-arrow.svg"></div>
+            <img aria-label="Expand details" id="sidebar-arrow" src="images/icons/expand-arrow.svg"></div>
           </span>
 
           <a id="location-link" target="_blank">
-            <img id="location-image" src="images/d-hall-location.jpeg" />
+            <img id="location-image" alt="Map of currently selected location" src="images/d-hall-location.jpeg" />
           </a>
 
           <span id="location-image-hint">&uarr; Click to open interactive map &uarr;</span>
