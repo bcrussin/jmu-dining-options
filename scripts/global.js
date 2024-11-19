@@ -7,7 +7,9 @@ const NAV_EXPAND_ICONS = {
     'closed': 'images/icons/menu.svg'
 }
 
-NAV_EXPAND_ICON.src = NAV_EXPAND_ICONS.closed;
+const ROOT = document.currentScript.getAttribute('root') ?? '';
+
+NAV_EXPAND_ICON.src = ROOT + NAV_EXPAND_ICONS.closed;
 
 function toggleNavbar(expanded) {
     let duration = 200;
@@ -17,10 +19,10 @@ function toggleNavbar(expanded) {
 
     if (expanded) {
         NAV.classList.add('expanded');
-        icon = NAV_EXPAND_ICONS.open;
+        icon = ROOT + NAV_EXPAND_ICONS.open;
     } else {
         NAV.classList.remove('expanded');
-        icon = NAV_EXPAND_ICONS.closed;
+        icon = ROOT + NAV_EXPAND_ICONS.closed;
     }
 
     NAV_EXPAND_ICON.animate(
